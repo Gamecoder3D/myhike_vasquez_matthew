@@ -53,7 +53,11 @@ export async function loginUser(email, password) {
 //   const user = await signupUser("Alice", "alice@email.com", "secret");
 // -------------------------------------------------------------
 export async function signupUser(name, email, password) {
-  const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+  const userCredential = await createUserWithEmailAndPassword(
+    auth,
+    email,
+    password
+  );
   const user = userCredential.user; // Get the user object
   await updateProfile(user, { displayName: name });
 
@@ -62,7 +66,8 @@ export async function signupUser(name, email, password) {
       name: name,
       email: email,
       country: "Canada", // Default value
-      school: "BCIT"     // Default value
+      school: "BCIT", // Default value
+      city: "Burnaby", // Default value
     });
     console.log("Firestore user document created successfully!");
   } catch (error) {
@@ -146,4 +151,3 @@ export function authErrorMessage(error) {
 
   return map[code] || "Something went wrong. Please try again.";
 }
-
