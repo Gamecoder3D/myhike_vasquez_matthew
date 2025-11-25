@@ -6,6 +6,34 @@
 
 /* Style the individual cards as needed */
 .card {
-  width: 45%; /* Adjust the width as per your design, leaving a little space for margins */
-  margin: 2%; /* Add margin between cards */
+  /* Use the Bootstrap grid to size cards. Do not force a fixed width here
+     which caused images to be squeezed when the layout changed. Keep
+     card width automatic and only add vertical spacing. */
+  width: auto;
+  margin: 0.5rem 0;
+}
+
+/* Make card images maintain their aspect ratio while filling the
+   image area. This prevents tall or squished-looking images. */
+.card-img-top.card-image {
+  width: 100%;
+  height: 160px; /* choose a consistent thumbnail height */
+  object-fit: cover; /* crop to fill while preserving aspect ratio */
+}
+
+/* Make the header/navbar stick to the top when scrolling. */
+site-navbar nav,
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1030; /* above most content but below modals */
+}
+
+/* Ensure the navbar background is opaque so content doesn't show through when sticky */
+.navbar.bg-primary {
+  background-color: var(--bs-primary) !important;
+}
+
+.material-icons {
+  cursor: pointer;
 }
